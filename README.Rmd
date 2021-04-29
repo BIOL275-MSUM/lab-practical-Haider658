@@ -1,0 +1,50 @@
+---
+title: "Lab 7 / Lab Practical"
+author: ""
+date: "`r Sys.Date()`"
+output: github_document
+---
+
+Fill out this report and submit it as your completed assignment.
+
+You can view the R markdown script that created this report here: [README.Rmd](README.Rmd)
+
+Use the iris dataset in R to answer the following question:
+
+> **How are petal width and petal length related in irises?**
+>
+> Create a scatterplot showing the two variables and add a regression line. Use petal length as the explantory variable and petal width as the response variable.
+
+```{r}
+
+```
+
+> Calculate the correlation between the two variables.
+
+```{r}
+
+```
+
+> Estimate the parameters of the linear regression. What is the slope?
+
+ANSWER
+
+```{r}
+
+```
+
+> Is the slope significantly different from zero?
+
+ANSWER
+
+```{r}
+
+```
+
+> Choose one species of your choice and fit the same linear model to the data for that species only. Which species did you choose? What is the slope? What is the correlation coefficient? Create a graph with scatterplot and linear regression line.
+
+ANSWERS
+
+```{r}
+
+```
