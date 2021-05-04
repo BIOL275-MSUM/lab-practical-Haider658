@@ -8,21 +8,34 @@ output: github_document
 Fill out this report and submit it as your completed assignment.
 
 You can view the R markdown script that created this report here: [README.Rmd](README.Rmd)
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+library(ggplot2)
+```
+
 
 Use the iris dataset in R to answer the following question:
+
+```{r print-iris, eval=FALSE}
+iris
+```
+
 
 > **How are petal width and petal length related in irises?**
 >
 > Create a scatterplot showing the two variables and add a regression line. Use petal length as the explantory variable and petal width as the response variable.
 
 ```{r}
-
+ggplot(data = iris, aes(x = Petal.Length, y = Petal.Width)) +
+  geom_point(size = 2) +
+  geom_smooth(method = "lm", size = 2, color = "orange")
 ```
 
 > Calculate the correlation between the two variables.
 
 ```{r}
-
+cor(iris$Petal.Width, iris$Petal.Length, use = "complete.obs")
 ```
 
 > Estimate the parameters of the linear regression. What is the slope?
@@ -30,21 +43,33 @@ Use the iris dataset in R to answer the following question:
 ANSWER
 
 ```{r}
-
+lm_pl_pw<-
+  lm(Petal.Width~ Petal.Length, data = iris)
+summary(lm_pl_pw)
 ```
+The Y-intercept and slope can be found under the heading Coefficients. They are -0.363076 and 0.415755, respectively. That means that for every 1 unit increase in petal length, there is a corresponding 0.4 unit increase in petal width.
 
 > Is the slope significantly different from zero?
 
 ANSWER
-
-```{r}
-
-```
+The P-value is near zero, much less than an alpha value of 0.05, so yes the slope is significantly different from zero.
 
 > Choose one species of your choice and fit the same linear model to the data for that species only. Which species did you choose? What is the slope? What is the correlation coefficient? Create a graph with scatterplot and linear regression line.
 
 ANSWERS
 
 ```{r}
+i1<- filter(iris, Species == "setosa")
+i1
 
+ggplot(data = i1, aes(x = Petal.Length, y = Petal.Width)) +
+  geom_point(size = 2) +
+  geom_smooth(method = "lm", size = 2, color = "yellow")
+
+cor(i1$Petal.Width, i1$Petal.Length, use = "complete.obs")
+
+i2<-
+  lm(Petal.Width~ Petal.Length, data = i1)
+summary(i2)
 ```
+Species chosen is "setosa".The Y-intercept and slope can be found under the heading Coefficients. They are -0.04822  and 0.20125, respectively.
